@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% set active = 'home' %}
+
+{% block content %}
+<div class="page-header">
+    <div class="breadcrumb">UGR · Ingeniería del Software · TP CRISP-DM</div>
+    <h1>Predictor de Niveles de Obesidad</h1>
+    <p class="lead">Herramienta de apoyo clínico que estima el nivel de obesidad de un paciente a partir de sus hábitos alimenticios, actividad física y antecedentes — sin requerir peso ni altura.</p>
+</div>
+
+<div class="grid-3">
+    <div class="card">
+        <div class="card-icon icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3>2.111 registros</h3>
+        <p>Dataset UCI de individuos de Colombia, Perú y México con 17 atributos de hábitos y antecedentes.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>7 categorías</h3>
+        <p>Desde "Peso insuficiente" hasta "Obesidad tipo III", clasificación supervisada multiclase balanceada.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h3>F1-macro 0.788</h3>
+        <p>Random Forest afinado con GridSearch sobre 24 combinaciones de hiperparámetros y validación cruzada 5-fold.</p>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Metodología CRISP-DM</h2>
+    <div class="timeline">
+        <div class="timeline-item done">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-content">
+                <h4>Comprensión del negocio</h4>
+                <p>Definición de objetivos y stakeholders del problema clínico.</p>
+            </div>
+        </div>
+        <div class="timeline-item done">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-content">
+                <h4>Comprensión de los datos</h4>
+                <p>Auditoría del dataset, detección de ruido por SMOTE, análisis univariado.</p>
+            </div>
+        </div>
+        <div class="timeline-item done">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-content">
+                <h4>Preparación de los datos</h4>
+                <p>Exclusión de peso/altura (anti-leakage), codificación, escalado, partición estratificada.</p>
+            </div>
+        </div>
+        <div class="timeline-item done">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-content">
+                <h4>Modelado</h4>
+                <p>Comparativa de 3 algoritmos con validación cruzada. Random Forest ganador, afinado por GridSearch.</p>
+            </div>
+        </div>
+        <div class="timeline-item done">
+            <div class="timeline-dot">5</div>
+            <div class="timeline-content">
+                <h4>Evaluación</h4>
+                <p>Métricas por clase, matriz de confusión, comparación contra baseline IMC.</p>
+            </div>
+        </div>
+        <div class="timeline-item active">
+            <div class="timeline-dot">6</div>
+            <div class="timeline-content">
+                <h4>Despliegue</h4>
+                <p>Aplicación web Flask con interfaz clínica · esta misma herramienta.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cta-row">
+    <a href="{{ url_for('predictor') }}" class="btn btn-primary">
+        Usar predictor
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="{{ url_for('analisis') }}" class="btn btn-secondary">Ver análisis del modelo</a>
+</div>
+{% endblock %}

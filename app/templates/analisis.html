@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% set active = 'analisis' %}
+
+{% block content %}
+<div class="page-header">
+    <div class="breadcrumb">Análisis del modelo</div>
+    <h1>Detalle técnico</h1>
+    <p class="lead">Visualizaciones generadas durante las fases 4 y 5 del proceso CRISP-DM que documentan el desempeño y la interpretabilidad del modelo.</p>
+</div>
+
+<div class="grid-2">
+    <div class="chart-card">
+        <h3>Importancia de variables</h3>
+        <p class="chart-meta">Ranking de feature_importances_ del Random Forest afinado.</p>
+        <div class="chart-img-wrapper">
+            {% if imagenes.importancias %}
+            <img src="{{ url_for('static', filename='img/importancias.png') }}" alt="Importancia de variables">
+            {% else %}
+            <span>Ejecutá el notebook para generar este gráfico</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="chart-card">
+        <h3>Comparativa de modelos</h3>
+        <p class="chart-meta">F1-macro promedio en validación cruzada de 5 folds para los tres algoritmos evaluados.</p>
+        <div class="chart-img-wrapper">
+            {% if imagenes.comparativa %}
+            <img src="{{ url_for('static', filename='img/comparativa.png') }}" alt="Comparativa de modelos">
+            {% else %}
+            <span>Ejecutá el notebook para generar este gráfico</span>
+            {% endif %}
+        </div>
+    </div>
+
+<div class="chart-card">
+        <h3>GridSearch · heatmap</h3>
+        <p class="chart-meta">Desempeño del modelo en función de n_estimators y max_depth.</p>
+        <div class="chart-img-wrapper">
+            {% if imagenes.heatmap %}
+            <img src="{{ url_for('static', filename='img/heatmap.png') }}" alt="GridSearch heatmap">
+            {% else %}
+            <span>Ejecutá el notebook para generar este gráfico</span>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Ficha técnica</h2>
+    <div class="info-grid">
+        <div class="info-item">
+            <div class="info-label">Algoritmo</div>
+            <div class="info-value">Random Forest</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Estimadores</div>
+            <div class="info-value">400 árboles</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Profundidad máx</div>
+            <div class="info-value">20</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">F1-macro CV</div>
+            <div class="info-value">0.788</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Variables predictoras</div>
+            <div class="info-value">23 (sin peso ni altura)</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Registros de entrenamiento</div>
+            <div class="info-value">1.669</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

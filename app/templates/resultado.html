@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% set active = 'predictor' %}
+
+{% block content %}
+<div class="page-header">
+    <div class="breadcrumb">Predictor · Resultado</div>
+    <h1>Resultado de la evaluación</h1>
+</div>
+
+<div class="result-hero" style="--accent: {{ color }};">
+    <div class="result-label">Categoría predicha</div>
+    <div class="result-value">{{ prediccion }}</div>
+    <div class="result-confidence">
+        Confianza del modelo: <strong>{{ confianza }}%</strong>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Distribución de probabilidades</h2>
+    <p class="section-meta">Probabilidad estimada para cada una de las 7 categorías. Ordenadas de mayor a menor.</p>
+
+    <div class="proba-list">
+        {% for item in proba_data %}
+        <div class="proba-item">
+            <div class="proba-header">
+                <span class="proba-name">{{ item.clase_es }}</span>
+                <span class="proba-value">{{ item.prob }}%</span>
+            </div>
+            <div class="proba-bar-bg">
+                <div class="proba-bar-fill" style="width: {{ item.prob }}%; background: {{ item.color }};"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="disclaimer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <div>
+        <strong>Importante</strong>
+        <p>Este resultado proviene de un modelo de machine learning entrenado con fines académicos y no reemplaza el juicio clínico de un profesional de la salud. Toda decisión diagnóstica o terapéutica debe ser realizada por personal médico calificado.</p>
+    </div>
+</div>
+
+<div class="cta-row">
+    <a href="{{ url_for('predictor') }}" class="btn btn-primary">Nueva evaluación</a>
+    <a href="{{ url_for('analisis') }}" class="btn btn-secondary">Ver análisis del modelo</a>
+</div>
+{% endblock %}

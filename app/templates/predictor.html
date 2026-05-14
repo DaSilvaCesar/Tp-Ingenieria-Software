@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% set active = 'predictor' %}
+
+{% block content %}
+<div class="page-header">
+    <div class="breadcrumb">Predictor · Nueva evaluación</div>
+    <h1>Evaluación de hábitos</h1>
+    <p class="lead">Completá los datos del paciente. No se requiere peso ni altura.</p>
+</div>
+
+{% if error %}
+<div class="alert alert-error">{{ error }}</div>
+{% endif %}
+
+<form method="POST" action="{{ url_for('predictor') }}">
+    <div class="form-grid">
+
+        <!-- Datos personales -->
+        <fieldset class="fieldset">
+            <legend>Datos personales</legend>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="Gender">Sexo biológico</label>
+                    <select name="Gender" id="Gender" required>
+                        <option value="">Seleccionar…</option>
+                        <option value="Male">Masculino</option>
+                        <option value="Female">Femenino</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Age">Edad <span class="hint">(años)</span></label>
+                    <input type="number" name="Age" id="Age" min="10" max="100" step="0.5" placeholder="Ej: 25" required>
+                </div>
+                <div class="form-group">
+                    <label for="family_history_with_overweight">Antecedente familiar de sobrepeso</label>
+                    <select name="family_history_with_overweight" id="family_history_with_overweight" required>
+                        <option value="">Seleccionar…</option>
+                        <option value="yes">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Hábitos alimenticios -->
+        <fieldset class="fieldset">
+            <legend>Hábitos alimenticios</legend>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="FAVC">Consumo frecuente de alimentos hipercalóricos</label>
+                    <select name="FAVC" id="FAVC" required>
+                        <option value="">Seleccionar…</option>
+                        <option value="yes">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="FCVC">Frecuencia de consumo de verduras <span class="hint">(1=nunca · 3=siempre)</span></label>
+                    <input type="number" name="FCVC" id="FCVC" min="1" max="3" step="0.1" placeholder="Ej: 2" required>
+                </div>
+                <div class="form-group">
+                    <label for="NCP">Número de comidas principales al día <span class="hint">(1–4)</span></label>
+                    <input type="number" name="NCP" id="NCP" min="1" max="4" step="0.5" placeholder="Ej: 3" required>
+                </div>
+                <div class="form-group">
+                    <label for="CAEC">Consumo de alimentos entre comidas</label>
+                    <select name="CAEC" id="CAEC" required>
+                        <option value="">Seleccionar…</option>
+                        <option value="no">No</option>
+                        <option value="Sometimes">A veces</option>
+                        <option value="Frequently">Frecuentemente</option>
+                        <option value="Always">Siempre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="CH2O">Litros de agua al día <span class="hint">(1=menos de 1L · 3=más de 2L)</span></label>
+                    <input type="number" name="CH2O" id="CH2O" min="1" max="3" step="0.1" placeholder="Ej: 2" required>
+                </div>
+                <div class="form-group">
+                    <label for="CALC">Consumo de alcohol</label>
+                    <select name="CALC" id="CALC" required>
+                        <option value="">Seleccionar…</option>
+                        <option value="no">No</option>
+                        <option value="Sometimes">A veces</option>
+                        <option value="Frequently">Frecuentemente</option>
+                        <option value="Always">Siempre</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Estilo de vida -->
+        <fieldset class="fieldset">
+            <legend>Estilo de vida</legend>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="SMOKE">Fumador</label>
+                    <select name="SMOKE" id="SMOKE" required>
+                        <option value="">Seleccionar…</option>
+                        <option value="yes">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="SCC">Monitorea calorías consumidas</label>
+                    <select name="SCC" id="SCC" required>
+                        <option value="">Seleccionar…</option>
+                        <option value="yes">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="FAF">Frecuencia de actividad física <span class="hint">(0=nunca · 3=diaria)</span></label>
+                    <input type="number" name="FAF" id="FAF" min="0" max="3" step="0.1" placeholder="Ej: 1" required>
+                </div>
+                <div class="form-group">
+                    <label for="TUE">Horas diarias usando dispositivos <span class="hint">(0–2)</span></label>
+                    <input type="number" name="TUE" id="TUE" min="0" max="2" step="0.1" placeholder="Ej: 1" required>
+                </div>
+                <div class="form-group">
+                    <label for="MTRANS">Medio de transporte habitual</label>
+                    <select name="MTRANS" id="MTRANS" required>
+                        <option value="">Seleccionar…</option>
+                        <option value="Automobile">Automóvil</option>
+                        <option value="Motorbike">Moto</option>
+                        <option value="Bike">Bicicleta</option>
+                        <option value="Public_Transportation">Transporte público</option>
+                        <option value="Walking">Caminando</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">
+                Calcular predicción
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+        </div>
+
+    </div>
+</form>
+{% endblock %}
