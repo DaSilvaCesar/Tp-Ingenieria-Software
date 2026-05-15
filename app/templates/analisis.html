@@ -33,12 +33,24 @@
         </div>
     </div>
 
-<div class="chart-card">
+    <div class="chart-card">
         <h3>GridSearch · heatmap</h3>
         <p class="chart-meta">Desempeño del modelo en función de n_estimators y max_depth.</p>
         <div class="chart-img-wrapper">
             {% if imagenes.heatmap %}
             <img src="{{ url_for('static', filename='img/heatmap.png') }}" alt="GridSearch heatmap">
+            {% else %}
+            <span>Ejecutá el notebook para generar este gráfico</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="chart-card">
+        <h3>Matriz de confusión</h3>
+        <p class="chart-meta">Predicciones correctas e incorrectas sobre el conjunto de prueba (418 pacientes, 7 clases).</p>
+        <div class="chart-img-wrapper">
+            {% if imagenes.matriz_confusion %}
+            <img src="{{ url_for('static', filename='img/matriz_confusion.png') }}" alt="Matriz de confusión">
             {% else %}
             <span>Ejecutá el notebook para generar este gráfico</span>
             {% endif %}
