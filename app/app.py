@@ -175,6 +175,7 @@ def analisis():
     return render_template("analisis.html", imagenes=imagenes)
 
 
+cargar_modelo()
+
 if __name__ == "__main__":
-    cargar_modelo()
     app.run(debug=True)
