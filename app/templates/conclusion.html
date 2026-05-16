@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+{% set active = 'conclusion' %}
+
+{% block content %}
+<div class="page-header">
+    <div class="breadcrumb">CRISP-DM · Fase 5 — Evaluación y Cierre</div>
+    <h1>Conclusión</h1>
+    <p class="lead">Evaluación formal del modelo sobre datos que no participaron en ninguna etapa del entrenamiento ni del ajuste de hiperparámetros.</p>
+</div>
+
+<!-- Métricas principales -->
+<div class="grid-3" style="margin-bottom: 1.5rem;">
+    <div class="card metric-card" style="--accent: #6366f1;">
+        <div class="metric-icon" style="background: #eef2ff;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="metric-value" style="color: #6366f1;">80.38%</div>
+        <div class="metric-label">Exactitud global</div>
+        <div class="metric-sub">sobre 418 pacientes de prueba</div>
+    </div>
+    <div class="card metric-card" style="--accent: #10b981;">
+        <div class="metric-icon" style="background: #d1fae5;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="metric-value" style="color: #10b981;">0.7985</div>
+        <div class="metric-label">F1-macro</div>
+        <div class="metric-sub">rendimiento parejo entre las 7 clases</div>
+    </div>
+    <div class="card metric-card" style="--accent: #8b5cf6;">
+        <div class="metric-icon" style="background: #ede9fe;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="metric-value" style="color: #8b5cf6;">+0.010</div>
+        <div class="metric-label">Generalización</div>
+        <div class="metric-sub">diferencia CV vs. prueba — sin sobreajuste</div>
+    </div>
+</div>
+
+<!-- Comparativa de modelos -->
+<div class="section">
+    <h2>Comparativa de modelos</h2>
+    <p class="section-meta">El Random Forest supera ampliamente a las dos referencias, confirmando que los hábitos tienen una señal predictiva real e independiente del IMC.</p>
+
+    <div class="compare-bars">
+        <div class="compare-item">
+            <div class="compare-header">
+                <span class="compare-name">Baseline <span class="compare-desc">(siempre clase más frecuente)</span></span>
+                <span class="compare-pct">16.75%</span>
+            </div>
+            <div class="bar-bg">
+                <div class="bar-fill" style="width: 16.75%; background: #e4e4e7;"></div>
+            </div>
+        </div>
+        <div class="compare-item">
+            <div class="compare-header">
+                <span class="compare-name">Regresión Logística</span>
+                <span class="compare-pct">60.29%</span>
+            </div>
+            <div class="bar-bg">
+                <div class="bar-fill" style="width: 60.29%; background: #f59e0b;"></div>
+            </div>
+        </div>
+        <div class="compare-item highlight-row">
+            <div class="compare-header">
+                <span class="compare-name">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;color:#6366f1;margin-right:4px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    Random Forest afinado
+                </span>
+                <span class="compare-pct winner">80.38%</span>
+            </div>
+            <div class="bar-bg">
+                <div class="bar-fill" style="width: 80.38%; background: #6366f1;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="diff-badges">
+        <span class="badge badge-green">+63.6 pts vs. Baseline</span>
+        <span class="badge badge-blue">+20.1 pts vs. Regresión Logística</span>
+        <span class="badge badge-purple">5× mejor que predecir al azar</span>
+    </div>
+</div>
+
+<!-- Desempeño por clase -->
+<div class="section">
+    <h2>Desempeño por categoría</h2>
+    <p class="section-meta">El modelo identifica con mayor certeza los extremos del espectro. Los errores ocurren solo entre categorías vecinas — nunca saltan más de un nivel de gravedad.</p>
+
+    <div class="class-grid">
+        <div class="class-card best">
+            <div class="class-badge best-badge">Mejor detectada</div>
+            <div class="class-name">Obesidad Tipo III</div>
+            <div class="class-f1">F1 = 0.9846 · Recall = 0.98</div>
+            <div class="class-explain">Patrones de hábitos muy marcados facilitan su identificación. Prácticamente ningún paciente con obesidad severa queda sin detectar.</div>
+        </div>
+        <div class="class-card hardest">
+            <div class="class-badge hard-badge">Más difícil</div>
+            <div class="class-name">Peso Normal</div>
+            <div class="class-f1">F1 = 0.6491 · Recall = 0.65</div>
+            <div class="class-explain">Las fronteras clínicas entre peso normal, bajo peso y sobrepeso leve son inherentemente borrosas. Un tercio de estos casos se confunde con categorías adyacentes — comportamiento esperable y clínicamente tolerable.</div>
+        </div>
+    </div>
+</div>
+
+<!-- 4 conclusiones -->
+<div class="section">
+    <h2>Cuatro conclusiones del estudio</h2>
+
+    <div class="conclusion-list">
+        <div class="conclusion-item">
+            <div class="conclusion-num" style="background: #6366f1;">1</div>
+            <div class="conclusion-body">
+                <h4>El modelo es robusto y consistente</h4>
+                <p>Con exactitud 0.8038, F1-macro 0.7985 y F1-ponderado 0.8019, las métricas son homogéneas entre sí. El dataset balanceado y el preprocesamiento cuidadoso (anti-leakage, escalado diferencial, términos de interacción) funcionaron como se esperaba. No hay sobreajuste: la diferencia entre validación cruzada y conjunto de prueba es de apenas 0.010.</p>
+            </div>
+        </div>
+        <div class="conclusion-item">
+            <div class="conclusion-num" style="background: #10b981;">2</div>
+            <div class="conclusion-body">
+                <h4>Los errores son clínicamente tolerables</h4>
+                <p>La matriz de confusión confirma que ningún error cruza más de un nivel de gravedad en la escala clínica. No hay ningún paciente con peso normal clasificado como obeso severo, ni viceversa. Los únicos errores ocurren entre categorías vecinas, lo que es aceptable para una herramienta de apoyo orientativo en consulta.</p>
+            </div>
+        </div>
+        <div class="conclusion-item">
+            <div class="conclusion-num" style="background: #f59e0b;">3</div>
+            <div class="conclusion-body">
+                <h4>Los hábitos predicen la obesidad sin peso ni altura</h4>
+                <p>El modelo opera exclusivamente sobre variables conductuales y demográficas — sin acceso al IMC. Aun así, clasifica correctamente a 8 de cada 10 individuos. Esto confirma que los hábitos diarios (frecuencia de actividad física, consumo de verduras, snacks, agua y transporte) tienen una señal predictiva real e independiente del peso corporal.</p>
+            </div>
+        </div>
+        <div class="conclusion-item">
+            <div class="conclusion-num" style="background: #8b5cf6;">4</div>
+            <div class="conclusion-body">
+                <h4>El criterio de éxito fue cumplido</h4>
+                <p>El objetivo era superar la clasificación basada únicamente en IMC. El Random Forest afinado es 5 veces mejor que el clasificador trivial y supera en más de 20 puntos a la Regresión Logística, descartando que el buen desempeño se deba al azar o a un problema demasiado fácil. El criterio de éxito técnico quedó verificado.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resumen CRISP-DM -->
+<div class="section">
+    <h2>Recorrido CRISP-DM completado</h2>
+    <div class="timeline">
+        <div class="timeline-item done">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-content">
+                <h4>Comprensión del negocio</h4>
+                <p>Objetivos clínicos definidos. Restricción anti-leakage (sin peso ni altura). Criterio de éxito: superar clasificación por IMC.</p>
+            </div>
+        </div>
+        <div class="timeline-item done">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-content">
+                <h4>Comprensión de los datos</h4>
+                <p>Dataset UCI 544 · 2.111 registros · Colombia, Perú y México. Detección de 77% de datos sintéticos (SMOTE). Análisis univariado y correlaciones.</p>
+            </div>
+        </div>
+        <div class="timeline-item done">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-content">
+                <h4>Preparación de los datos</h4>
+                <p>Exclusión de Weight y Height. Codificación binaria, one-hot encoding, términos de interacción FAF×Género. StandardScaler solo en columnas numéricas. Partición estratificada 80/20.</p>
+            </div>
+        </div>
+        <div class="timeline-item done">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-content">
+                <h4>Modelado</h4>
+                <p>3 algoritmos comparados con CV 5-fold. Random Forest (F1 0.780) supera a Gradient Boosting (0.766) y Regresión Logística (0.565). GridSearchCV: 24 combinaciones → 400 árboles, max_depth=20.</p>
+            </div>
+        </div>
+        <div class="timeline-item done">
+            <div class="timeline-dot">5</div>
+            <div class="timeline-content">
+                <h4>Evaluación</h4>
+                <p>Exactitud 80.38% · F1-macro 0.7985 · sin sobreajuste · errores clínicamente tolerables · criterio de éxito cumplido.</p>
+            </div>
+        </div>
+        <div class="timeline-item done">
+            <div class="timeline-dot">6</div>
+            <div class="timeline-content">
+                <h4>Despliegue</h4>
+                <p>App web Flask con interfaz clínica. Disponible en http://127.0.0.1:5000 · Repositorio publicado en GitHub.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cta-row">
+    <a href="{{ url_for('predictor') }}" class="btn btn-primary">
+        Probar el predictor
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="{{ url_for('analisis') }}" class="btn btn-secondary">Ver análisis del modelo</a>
+    <a href="{{ url_for('nosotros') }}" class="btn btn-secondary">Conocer el equipo</a>
+</div>
+
+<style>
+/* Métricas */
+.metric-card { text-align: center; }
+.metric-icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; margin: 0 auto 1rem; }
+.metric-icon svg { width: 22px; height: 22px; }
+.metric-value { font-size: 2rem; font-weight: 800; letter-spacing: -.03em; margin-bottom: .2rem; }
+.metric-label { font-size: .9rem; font-weight: 700; color: var(--text); margin-bottom: .2rem; }
+.metric-sub { font-size: .78rem; color: var(--text-muted); }
+
+/* Barras comparativas */
+.compare-bars { display: flex; flex-direction: column; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1rem; }
+.compare-item { display: flex; flex-direction: column; gap: .4rem; }
+.compare-header { display: flex; justify-content: space-between; align-items: center; }
+.compare-name { font-size: .9rem; font-weight: 500; color: var(--text); display: flex; align-items: center; }
+.compare-desc { font-size: .78rem; color: var(--text-muted); font-weight: 400; margin-left: .4rem; }
+.compare-pct { font-weight: 700; font-size: .95rem; color: var(--text-muted); }
+.compare-pct.winner { color: #6366f1; font-size: 1.1rem; }
+.bar-bg { height: 10px; background: var(--bg-hover); border-radius: 100px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 100px; transition: width .8s cubic-bezier(.4,0,.2,1); }
+.highlight-row .compare-name { font-weight: 700; color: #4f46e5; }
+
+.diff-badges { display: flex; gap: .6rem; flex-wrap: wrap; }
+.badge { font-size: .8rem; font-weight: 600; padding: .3rem .85rem; border-radius: 100px; }
+.badge-green  { background: #d1fae5; color: #065f46; }
+.badge-blue   { background: #dbeafe; color: #1e40af; }
+.badge-purple { background: #ede9fe; color: #5b21b6; }
+
+/* Clases */
+.class-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+.class-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
+.class-badge { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .6rem; padding: .2rem .6rem; border-radius: 4px; display: inline-block; }
+.best-badge  { background: #d1fae5; color: #065f46; }
+.hard-badge  { background: #fef3c7; color: #92400e; }
+.class-name  { font-size: 1.15rem; font-weight: 700; margin-bottom: .3rem; }
+.class-f1    { font-size: .82rem; font-weight: 600; color: var(--text-muted); margin-bottom: .65rem; font-family: 'Courier New', monospace; }
+.class-explain { font-size: .875rem; color: var(--text-muted); line-height: 1.55; }
+
+/* Conclusiones */
+.conclusion-list { display: flex; flex-direction: column; gap: 1rem; }
+.conclusion-item { display: flex; gap: 1.25rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; }
+.conclusion-num { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; color: white; font-weight: 800; font-size: 1rem; flex-shrink: 0; margin-top: .1rem; }
+.conclusion-body h4 { font-size: 1rem; margin-bottom: .4rem; }
+.conclusion-body p  { font-size: .875rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+</style>
+{% endblock %}

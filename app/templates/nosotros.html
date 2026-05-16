@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+{% set active = 'nosotros' %}
+
+{% block content %}
+<div class="page-header">
+    <div class="breadcrumb">UGR · Licenciatura en Ciencias de Datos · Ingeniería de Software</div>
+    <h1>Nosotros</h1>
+    <p class="lead">Somos un equipo de seis profesionales con trayectorias distintas — del derecho al backend, del SAP a la visualización — unidos por la Licenciatura en Ciencias de Datos de la UGR y este trabajo práctico.</p>
+</div>
+
+<!-- Docentes -->
+<div class="docentes-banner">
+    <div class="docentes-label">Docentes de la materia</div>
+    <div class="docentes-names">
+        <span class="docente-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            Ignacio Sanseovich
+        </span>
+        <span class="docente-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            Briant Alcides Gauna
+        </span>
+    </div>
+</div>
+
+<!-- Grid de integrantes -->
+<div class="section">
+    <h2>El equipo</h2>
+    <p class="section-meta">Seis perfiles, una meta: aplicar CRISP-DM para predecir niveles de obesidad.</p>
+
+    <div class="team-grid">
+
+        <!-- Lourdes -->
+        <div class="member-card">
+            <div class="member-avatar" style="--av-color: #6366f1;">LB</div>
+            <div class="member-info">
+                <h3 class="member-name">Lourdes Carolina Benítez Garay</h3>
+                <div class="member-title">Técnica Universitaria en Programación · UTN</div>
+                <p class="member-bio">Orientada al desarrollo backend y a la ciencia de datos. Apasionada por la limpieza, transformación y visualización de datos, con interés en seguir creciendo en desarrollo de software.</p>
+                <div class="member-stack">
+                    <span class="tag">Backend</span>
+                    <span class="tag">Bases de datos</span>
+                    <span class="tag">Visualización</span>
+                    <span class="tag">Ciencia de datos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Héctor -->
+        <div class="member-card">
+            <div class="member-avatar" style="--av-color: #10b981;">HG</div>
+            <div class="member-info">
+                <h3 class="member-name">Héctor Maximiliano García Pérez</h3>
+                <div class="member-title">Técnico Universitario en Desarrollo de Software</div>
+                <p class="member-bio">Analista de datos, BI y visualización en ejercicio. Está incursionando activamente en el campo de la ciencia de datos, aportando su experiencia en análisis y reporting al equipo.</p>
+                <div class="member-stack">
+                    <span class="tag">Analista BI</span>
+                    <span class="tag">Bases de datos</span>
+                    <span class="tag">Visualización</span>
+                    <span class="tag">Ciencia de datos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Julián -->
+        <div class="member-card">
+            <div class="member-avatar" style="--av-color: #f59e0b;">JS</div>
+            <div class="member-info">
+                <h3 class="member-name">Julián Alejandro Siles</h3>
+                <div class="member-title">Técnico Superior en Ciencia de Datos</div>
+                <p class="member-bio">Consultor funcional SAP (módulos FI y TRM). Combina su experiencia en finanzas corporativas y automatización de procesos con una sólida base en bases de datos y relevamiento funcional.</p>
+                <div class="member-stack">
+                    <span class="tag">SAP FI/TRM</span>
+                    <span class="tag">Bases de datos</span>
+                    <span class="tag">Automatización</span>
+                    <span class="tag">Finanzas</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sebastián -->
+        <div class="member-card">
+            <div class="member-avatar" style="--av-color: #8b5cf6;">SS</div>
+            <div class="member-info">
+                <h3 class="member-name">Sebastián Simonetta</h3>
+                <div class="member-title">Técnico Superior en Desarrollo de Software</div>
+                <p class="member-bio">Desarrollador full-stack y docente de Pensamiento Computacional (modalidad remota). La ciencia de datos es un territorio nuevo para él, pero lo aborda con entusiasmo y curiosidad genuina.</p>
+                <div class="member-stack">
+                    <span class="tag">Vue.js</span>
+                    <span class="tag">PHP</span>
+                    <span class="tag">C#</span>
+                    <span class="tag">Bases de datos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Juan Marcos -->
+        <div class="member-card">
+            <div class="member-avatar" style="--av-color: #ef4444;">JP</div>
+            <div class="member-info">
+                <h3 class="member-name">Juan Marcos Payetta</h3>
+                <div class="member-title">Técnico en Programación · UTN Mar del Plata</div>
+                <p class="member-bio">Ex abogado reconvertido en desarrollador. Hoy trabaja en el INIDEP desarrollando sistemas para investigación oceanográfico-pesquera. Cursa la Licenciatura en Ciencia de Datos para llevar su perfil al siguiente nivel.</p>
+                <div class="member-stack">
+                    <span class="tag">Backend</span>
+                    <span class="tag">Sistemas científicos</span>
+                    <span class="tag">INIDEP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- César -->
+        <div class="member-card">
+            <div class="member-avatar" style="--av-color: #3b82f6;">CD</div>
+            <div class="member-info">
+                <h3 class="member-name">César Augusto Da Silva</h3>
+                <div class="member-title">Técnico Superior en Desarrollo de Software</div>
+                <p class="member-bio">Especialista en programación backend y bases de datos. Trabaja como desarrollador para un centro de datos de una empresa del exterior, aplicando sus habilidades en entornos de alta exigencia.</p>
+                <div class="member-stack">
+                    <span class="tag">Backend</span>
+                    <span class="tag">Bases de datos</span>
+                    <span class="tag">Data Center</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Sobre la carrera -->
+<div class="section">
+    <div class="career-banner">
+        <div class="career-icon">🎓</div>
+        <div>
+            <div class="career-title">Licenciatura en Ciencias de Datos — UGR</div>
+            <div class="career-sub">Este trabajo práctico forma parte de la materia <strong>Ingeniería de Software</strong>, aplicando la metodología <strong>CRISP-DM</strong> en un caso real de clasificación supervisada multiclase.</div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ── Docentes ─────────────────────────────────────────────────────── */
+.docentes-banner {
+    background: var(--primary-soft);
+    border: 1px solid #c7d2fe;
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+.docentes-label {
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    white-space: nowrap;
+}
+.docentes-names { display: flex; gap: .75rem; flex-wrap: wrap; }
+.docente-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: white;
+    border: 1px solid #c7d2fe;
+    border-radius: 100px;
+    padding: .35rem .9rem;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+.docente-chip svg { width: 15px; height: 15px; }
+
+/* ── Team grid ────────────────────────────────────────────────────── */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.25rem;
+}
+
+.member-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.1rem;
+    transition: border-color .15s, box-shadow .15s;
+}
+.member-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-lg);
+}
+
+.member-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--av-color);
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 1rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    letter-spacing: .02em;
+}
+
+.member-info { flex: 1; min-width: 0; }
+
+.member-name {
+    font-size: 1rem !important;
+    font-weight: 700;
+    margin-bottom: .2rem;
+    color: var(--text);
+    letter-spacing: -.01em;
+}
+
+.member-title {
+    font-size: .78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: .65rem;
+}
+
+.member-bio {
+    font-size: .875rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: .85rem;
+}
+
+.member-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+}
+
+.tag {
+    font-size: .72rem;
+    font-weight: 600;
+    padding: .2rem .6rem;
+    border-radius: 100px;
+    background: var(--bg-hover);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+/* ── Career banner ────────────────────────────────────────────────── */
+.career-banner {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+.career-icon { font-size: 2rem; flex-shrink: 0; }
+.career-title { font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
+.career-sub { font-size: .9rem; color: var(--text-muted); line-height: 1.55; }
+
+@media (max-width: 900px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .docentes-banner { flex-direction: column; align-items: flex-start; gap: .75rem; }
+}
+</style>
+{% endblock %}

@@ -153,6 +153,16 @@ def predictor():
     )
 
 
+@app.route("/nosotros")
+def nosotros():
+    return render_template("nosotros.html")
+
+
+@app.route("/conclusion")
+def conclusion():
+    return render_template("conclusion.html")
+
+
 @app.route("/analisis")
 def analisis():
     img_dir  = os.path.join(BASE_DIR, "static", "img")
